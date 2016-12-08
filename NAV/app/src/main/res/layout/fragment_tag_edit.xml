@@ -1,0 +1,76 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hsin_tingchung.htc.TagEdit"
+    android:layout_gravity="center_vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:layout_width="326dp"
+        android:layout_gravity="center_vertical|center_horizontal">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="34dp"
+            android:weightSum="1"
+            android:layout_width="323dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:text="@string/category" />
+
+            <Spinner
+                android:layout_width="196dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/category_spinner" />
+
+            <Button
+                android:text="+"
+                android:layout_width="54dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/new_category"
+                android:clickable="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="344dp"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <TextView
+                android:text="@string/tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView9"
+                android:layout_weight="0.17" />
+
+            <ScrollView
+                android:layout_width="219dp"
+                android:layout_height="300dp"
+                android:layout_weight="0.49">
+
+                <LinearLayout
+                    android:layout_width="219dp"
+                    android:layout_height="300dp"
+                    android:orientation="vertical"
+                    android:id="@+id/tag_output" />
+            </ScrollView>
+
+            <Button
+                android:text="+"
+                android:layout_width="54dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/new_tag"
+                android:clickable="false" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

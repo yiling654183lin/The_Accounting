@@ -1,0 +1,113 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hsin_tingchung.htc.BudgetNew">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:layout_width="326dp"
+        android:layout_gravity="center_vertical|center_horizontal">
+
+        <TextView
+            android:text="@string/new_budget_item"
+            android:id="@+id/textView2"
+            android:layout_column="4"
+            android:layout_height="31dp"
+            android:layout_width="119dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="297dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:text="項目名稱："
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/item_name"
+                    android:layout_column="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:text="預算金額："
+                    android:id="@+id/textView4"
+                    android:layout_column="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/item_amount"
+                    android:layout_column="1"
+                    android:layout_weight="0.57" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:text="@string/period"
+                    android:id="@+id/textView5"
+                    android:layout_column="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_width="183dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:ems="10"
+                    android:id="@+id/item_period" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="105dp">
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/save_new_budget"
+                android:id="@+id/save_new_budget"
+                android:background="@drawable/button_budget_tag_selected" />
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/back_new_budget"
+                android:id="@+id/back_new_budget"
+                android:background="@drawable/button_budget_tag_selected" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

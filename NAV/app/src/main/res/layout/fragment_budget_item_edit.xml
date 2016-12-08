@@ -1,0 +1,106 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hsin_tingchung.htc.BudgetItemEdit"
+    android:layout_gravity="center_vertical|center_horizontal">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="364dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/BEI_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textSize="30sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal|bold" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="322dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/amount"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText3" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/BEI_money" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="@string/period"
+                android:id="@+id/editText2" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/BEI_period" />
+        </LinearLayout>
+
+        <TextView
+            android:text="@string/tag"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView16" />
+
+        <HorizontalScrollView
+            android:layout_width="326dp"
+            android:layout_height="67dp">
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/BEI_tag_output">
+
+            </GridLayout>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="329dp"
+            android:layout_height="63dp">
+
+            <Button
+                android:text="@string/save_new_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/BEI_save"
+                android:layout_weight="0.27"
+                android:background="@drawable/button_budget_tag_selected" />
+
+            <Button
+                android:text="@string/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/BEI_cancel"
+                android:layout_weight="0.27"
+                android:background="@drawable/button_budget_tag_selected" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,203 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hsin_tingchung.htc.AccountItem">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:layout_width="326dp"
+        android:layout_gravity="center_vertical|center_horizontal">
+
+        <TextView
+            android:text="@string/account_item"
+            android:id="@+id/textView2"
+            android:layout_column="4"
+            android:layout_height="31dp"
+            android:layout_width="119dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="228dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:text="@string/amount"
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/item_amount"
+                    android:layout_column="1"
+                    android:layout_weight="0.57" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:text="@string/time"
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/item_time"
+                    android:layout_column="1"
+                    android:layout_weight="0.57" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:text="@string/category"
+                    android:id="@+id/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="81dp"
+                    android:id="@+id/category_spinner" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:text="@string/tag"
+                    android:id="@+id/tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="81dp"
+                    android:id="@+id/tag_spinner" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:text="@string/gps"
+                    android:id="@+id/gps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/item_gps"
+                    android:layout_column="1"
+                    android:layout_weight="0.57" />
+
+            </LinearLayout>
+<!--
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:text="@string/memo"
+                    android:id="@+id/memo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/item_memo"
+                    android:layout_column="1"
+                    android:layout_weight="0.57" />
+
+            </LinearLayout>
+            -->
+
+        </LinearLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="169dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            tools:context=".MainActivity$PlaceholderFragment">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/listview_ms"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/back_new_budget"
+                android:id="@+id/back_new_account"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/button_budget_tag_selected" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_item_account"
+                android:id="@+id/edit_item_account"
+                android:layout_gravity="right"
+                android:background="@drawable/button_budget_tag_selected" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save_new_budget"
+                android:id="@+id/save_new_account"
+                android:background="@drawable/button_budget_tag_selected" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

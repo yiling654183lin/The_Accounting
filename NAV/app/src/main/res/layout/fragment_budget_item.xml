@@ -1,0 +1,148 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hsin_tingchung.htc.BudgetItem"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:text="@string/budget_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/budget_name"
+                android:layout_weight="1"
+                tools:ignore="InefficientWeight" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:weightSum="1">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                tools:ignore="UselessParent">
+
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/layout_tags">
+
+                </GridLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/period"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView7" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/budget_period" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/budget_item_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView10"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/budget_item_amount" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/budget_item_used"
+                android:layout_width="68dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView16" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/budget_item_used" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:text="@string/back_new_budget"
+                android:layout_width="123dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/budget_item_back"
+                android:background="@drawable/button_budget_tag_selected" />
+
+            <Button
+                android:text="@string/budget_item_edit"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/budget_item_edit"
+                android:visibility="visible"
+                android:background="@drawable/button_budget_tag_selected" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/mainLayout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="invisible">
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>
