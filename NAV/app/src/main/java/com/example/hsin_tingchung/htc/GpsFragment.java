@@ -26,9 +26,11 @@ import android.widget.Toast;
 
 import com.example.hsin_tingchung.nav.R;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
+import java.util.StringTokenizer;
 import java.util.concurrent.ExecutionException;
 
 public class GpsFragment extends Fragment {
@@ -47,6 +49,7 @@ public class GpsFragment extends Fragment {
     private final String TAG = "GPS";
 
     private ProgressDialog progressDialog;
+    private double lng, lat;
 
     public GpsFragment() {
     }
@@ -79,28 +82,12 @@ public class GpsFragment extends Fragment {
 
         if (lms.isProviderEnabled(LocationManager.GPS_PROVIDER) || lms.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             //如果GPS或網路定位開啟，呼叫locationServiceInitial()更新位置
-            //getService = true;    //確認開啟定位服務
             locationServiceInitial();
-            //Toast.makeText(getActivity(), "哈哈", Toast.LENGTH_SHORT).show();
-        } else {
 
+        } else {
             Toast.makeText(getActivity(), "請開啟定位服務", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));    //開啟設定頁面
-            //startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 1);
-            //Thread threadGPS = new Thread(new ThreadGPS()); // 產生Thread物件
-            //threadGPS.start(); // 開始執行Runnable.run();
 
-            /*
-            while (true)
-            {
-                if (lms.isProviderEnabled(LocationManager.GPS_PROVIDER) || lms.isProviderEnabled(LocationManager.NETWORK_PROVIDER))
-                {
-                    //getService = true;    //確認開啟定位服務
-                    locationServiceInitial();
-                    break;
-                }
-            }
-            */
         }
     }
 
@@ -116,7 +103,7 @@ public class GpsFragment extends Fragment {
         updateWithNewLocation(location);
 
         //Location Listener
-        long minTime = 2000;//ms
+        long minTime = 5000;//ms
         float minDist = 1;//meter
         lms.requestLocationUpdates(bestProvider, minTime, minDist, locationListener);
 
@@ -126,8 +113,8 @@ public class GpsFragment extends Fragment {
     private void updateWithNewLocation(Location location) {
         String where = "";
         if (location != null) {
-            double lng = location.getLongitude();   //經度
-            double lat = location.getLatitude();    //緯度
+            lng = location.getLongitude();   //經度
+            lat = location.getLatitude();    //緯度
             float speed = location.getSpeed();      //速度
             long time = location.getTime();         //時間
             String timeString = getTimeString(time);
@@ -143,8 +130,15 @@ public class GpsFragment extends Fragment {
         }
 
         //位置改變顯示
-        //Toast.makeText(getActivity(), where, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), where, Toast.LENGTH_SHORT).show();
     }
+
+    public String getLocation(){ //經度
+        NumberFormat nf =  NumberFormat.getInstance();
+        nf.setMaximumFractionDigits(6);
+        return nf.format(lng)+" , "+nf.format(lat);
+    }
+
 
     LocationListener locationListener = new LocationListener(){
 
@@ -184,26 +178,6 @@ public class GpsFragment extends Fragment {
     };
 
 
-    // 更新現在的位置
-    /*private void getLocation(Location location) {
-        if(location != null) {
-            //getLocationInfo(location);
-
-        }
-    }*/
-
-    // 取得定位資訊
-    /*public String getLocationInfo(Location location) {
-        str = new StringBuffer();
-        str.append("定位提供者(Provider): "+location.getProvider());
-        str.append("\n緯度(Latitude): " + Double.toString(location.getLatitude()));
-        str.append("\n經度(Longitude): " + Double.toString(location.getLongitude()));
-        str.append("\n高度(Altitude): " + Double.toString(location.getAltitude()));
-        Toast.makeText(getActivity(), str, Toast.LENGTH_LONG).show();
-        return str.toString();
-    }*/
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -215,28 +189,6 @@ public class GpsFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
-
-    /*
-    @Override
-    public void onLocationChanged(Location location) {	//當地點改變時
-        if(getService) {
-            lms.requestLocationUpdates(bestProvider, 2000, 1, this);
-            //服務提供者、更新頻率60000毫秒=1分鐘、最短距離、地點改變時呼叫物件
-        }
-    }
-
-    @Override
-    public void onProviderDisabled(String arg0) {	//當GPS或網路定位功能關閉時
-    }
-
-    @Override
-    public void onProviderEnabled(String arg0) {	//當GPS或網路定位功能開啟
-    }
-
-    @Override
-    public void onStatusChanged(String arg0, int arg1, Bundle arg2) {	//定位狀態改變
-    }
-    */
 
 
     private String getTimeString(long timeInMilliseconds){

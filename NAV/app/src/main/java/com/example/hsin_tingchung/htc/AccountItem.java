@@ -275,14 +275,16 @@ public class AccountItem extends Fragment implements ItemAdapter.AdapterCallback
                 // 除掉被merge後，原本剩下多少
                 int lastAmount = 0;
                 String firstTime = "";
+                String firstLocation = "";
                 if(mergeCount != 0){
-                    colNames = new String[]{"time", "total"};
+                    colNames = new String[]{"time", "total", "location"};
 
                     where = "save = " + mergeSave;
                     d = dbget.query(DATABASE_TABLE_NOW, colNames, where, null, null, null, null);
 
                     d.moveToFirst();
                     firstTime = d.getString(0);
+                    firstLocation = d.getString(2);
                     d.moveToFirst();
                     for (int j = 0; j < d.getCount(); j++)
                     {
@@ -297,6 +299,7 @@ public class AccountItem extends Fragment implements ItemAdapter.AdapterCallback
                 where = "UID = " + mergeSave;
                 update.put("Money", lastAmount);
                 update.put("Time", firstTime);
+                update.put("Memo", firstLocation);
                 db.update(DATABASE_TABLE_ACC, update, where, null);
 
             }
@@ -311,20 +314,22 @@ public class AccountItem extends Fragment implements ItemAdapter.AdapterCallback
                 String nuid = orgListContain.get(i);
 
                 // create新的AccountItem
-                String[] colNames = new String[]{"time", "total"};
-                String TIME_temp = "", TOTAL_temp = "";
+                String[] colNames = new String[]{"time", "total", "location"};
+                String TIME_temp = "", TOTAL_temp = "", LOCATION_temp = "";
                 String where = "N_UID = " + nuid;
                 Cursor d = dbget.query(DATABASE_TABLE_NOW, colNames, where, null, null, null, null);
 
                 d.moveToFirst();
                 TIME_temp = d.getString(0);
                 TOTAL_temp = d.getString(1);
+                LOCATION_temp = d.getString(2);
                 d.moveToNext();
                 d.close();
 
                 ContentValues insert = new ContentValues();
                 insert.put("Time", TIME_temp);
                 insert.put("Money", TOTAL_temp);
+                insert.put("Memo", LOCATION_temp);
                 db.insert(DATABASE_TABLE_ACC, null, insert);
 
                 // update NowItem的save為最新的AccountID
@@ -338,15 +343,16 @@ public class AccountItem extends Fragment implements ItemAdapter.AdapterCallback
         // update這筆AccountItem金額、時間
 
         int newAmount = 0;
-        String firstTime = "";
+        String firstTime = "", firstLocation = "";
 
-        String[] colNames = new String[]{"time", "total"};
+        String[] colNames = new String[]{"time", "total", "location"};
 
         String where = "save = " + ID;
         Cursor d = dbget.query(DATABASE_TABLE_NOW, colNames, where, null, null, null, null);
 
         d.moveToFirst();
         firstTime = d.getString(0);
+        firstLocation = d.getString(2);
         d.moveToFirst();
         for (int j = 0; j < d.getCount(); j++)
         {
@@ -361,6 +367,7 @@ public class AccountItem extends Fragment implements ItemAdapter.AdapterCallback
         where = "UID = " + ID;
         update.put("Money", newAmount);
         update.put("Time", firstTime);
+        update.put("Memo", firstLocation);
         db.update(DATABASE_TABLE_ACC, update, where, null);
 
     }

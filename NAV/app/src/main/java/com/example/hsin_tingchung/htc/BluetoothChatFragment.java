@@ -364,7 +364,9 @@ public class BluetoothChatFragment extends Fragment {
                     }
 
 
-
+                    // gps Location
+                    GpsFragment gps_fragment = (GpsFragment) getFragmentManager().findFragmentByTag("GPS_fragment_TAG");
+                    String memo = gps_fragment.getLocation();
 
                     ContentValues amount = new ContentValues();
                     amount.put("time", date2);
@@ -379,6 +381,7 @@ public class BluetoothChatFragment extends Fragment {
                     amount.put("Done", "0");
                     amount.put("save", Integer.toString(save));
                     amount.put("second", ut);
+                    amount.put("location", memo);
                     db.insert(DATABASE_TABLE_OUT, null, amount);
                     // construct a string from the valid bytes in the buffer
                     Toast.makeText(activity, mConnectedDeviceName + ":  " + msg.obj.toString(), Toast.LENGTH_SHORT).show();
@@ -406,6 +409,11 @@ public class BluetoothChatFragment extends Fragment {
         String[] col = new String[]{"UID, Time, Money"};
         Cursor am = dbget.query(DATABASE_TABLE_SPT, col,null,null,null,null,null);
         Date dt1= sdf.parse(time);
+
+        // gps Location
+        GpsFragment gps_fragment = (GpsFragment) getFragmentManager().findFragmentByTag("GPS_fragment_TAG");
+        String memo = gps_fragment.getLocation();
+
         if(am.getCount()!=0) {
             am.moveToLast();  // last one
             // display data
@@ -417,6 +425,7 @@ public class BluetoothChatFragment extends Fragment {
                 ContentValues update = new ContentValues();
                 String where = "UID=" + am.getString(0);
                 update.put("Money", am.getInt(2) + amount);
+                update.put("Memo", memo);
                 db.update(DATABASE_TABLE_SPT, update, where, null);
                 Log.i(TAG, "Update spent "+(timeP/(1000)));
                 return am.getInt(0);
@@ -425,6 +434,7 @@ public class BluetoothChatFragment extends Fragment {
                 ContentValues insert = new ContentValues();
                 insert.put("Time", time);
                 insert.put("Money", amount);
+                insert.put("Memo", memo);
                 db.insert(DATABASE_TABLE_SPT, null, insert);
                 Log.i(TAG, "Insert spent "+(timeP/(1000)));
 
@@ -439,6 +449,7 @@ public class BluetoothChatFragment extends Fragment {
             ContentValues insert = new ContentValues();
             insert.put("Time", time);
             insert.put("Money", amount);
+            insert.put("Memo", memo);
             db.insert(DATABASE_TABLE_SPT, null, insert);
 
             String[] col1 = new String[]{"UID,Time"};

@@ -29,6 +29,7 @@ public class DBhelper extends SQLiteOpenHelper {
                 "Done real no null, " +
                 "save integer, " +
                 "second text, " +
+                "location text, " +
                 "FOREIGN KEY(save) REFERENCES Account(UID) " +
                 ")");
 
