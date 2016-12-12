@@ -179,6 +179,7 @@ public class AccountItem extends Fragment implements ItemAdapter.AdapterCallback
         msView(v);
 
         // ==0 insert & >0 update
+        /*
         save_new_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -198,16 +199,17 @@ public class AccountItem extends Fragment implements ItemAdapter.AdapterCallback
 
             }
         });
+        */
         back_new_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SwitchToViewAccount();
             }
         });
-        edit_item_account.setOnClickListener(new View.OnClickListener() {
+        save_new_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                saveTag();
                 mergeAndSplit();
                 SwitchToViewAccount();
 
@@ -218,8 +220,20 @@ public class AccountItem extends Fragment implements ItemAdapter.AdapterCallback
         return v;
     }
 
+    private void saveTag() {
+        if(hadSavedCount == 0) {
+            ContentValues nct = new ContentValues();
+            nct.put("A_UID", ID);
+            nct.put("T_UID", selecedTag_UID);
+            db.insert(DATABASE_TABLE_STAG, null, nct);
+        } else {
+            ContentValues nct = new ContentValues();
+            nct.put("A_UID", ID);
+            nct.put("T_UID", selecedTag_UID);
+            db.update(DATABASE_TABLE_STAG, nct,  "A_UID = " + ID, null);
+        }
+    }
     private void mergeAndSplit(){
-
 
         for(int i = 0; i < myListContain.size(); i++)
         {
@@ -246,6 +260,8 @@ public class AccountItem extends Fragment implements ItemAdapter.AdapterCallback
                 if( mergeCount == 1) {
                     where = "UID = " + mergeSave;
                     db.delete(DATABASE_TABLE_ACC, where, null);
+                    where = "A_UID = "  + mergeSave;
+                    db.delete(DATABASE_TABLE_STAG, where, null);
                     mergeCount--;
                 }
 
@@ -623,7 +639,7 @@ public class AccountItem extends Fragment implements ItemAdapter.AdapterCallback
         //item_memo = (TextView)v.findViewById(R.id.item_memo);
         save_new_account = (Button)v.findViewById(R.id.save_new_account);
         back_new_account = (Button)v.findViewById(R.id.back_new_account);
-        edit_item_account = (Button)v.findViewById(R.id.edit_item_account);
+        //edit_item_account = (Button)v.findViewById(R.id.edit_item_account);
 
 
         //get Spinner
